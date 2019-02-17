@@ -20,8 +20,10 @@ public class WebSocketController {
         this.template = template;
     }
 
-    @Scheduled(fixedRate = 5000)
+    @Scheduled(fixedRate = 10000)
     private void sendMsg() {
         template.convertAndSend("/msg", new Currency("EUR", "USD", Math.random() * 0.3 + 1, LocalDateTime.now()));
+        template.convertAndSend("/msg", new Currency("EUR", "GBP", Math.random() * 0.2 + 0.8, LocalDateTime.now()));
+        template.convertAndSend("/msg", new Currency("EUR", "PUMA", Math.random() * 200 + 2127, LocalDateTime.now()));
     }
 }
