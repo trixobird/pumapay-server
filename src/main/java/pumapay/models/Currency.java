@@ -8,6 +8,6 @@ import java.time.LocalDateTime;
 public class Currency {
     private final String from;
     private final String to;
-    private final String value;
-    private final LocalDateTime dateTime;
+    private final double value;
+    private final LocalDateTime date;
 }
