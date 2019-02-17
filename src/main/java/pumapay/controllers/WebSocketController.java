@@ -5,6 +5,7 @@ import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
+import pumapay.models.Currency;
 
 import java.text.DecimalFormat;
 import java.time.LocalDateTime;
@@ -22,7 +23,7 @@ public class WebSocketController {
 
     @Scheduled(fixedRate = 5000)
     private void sendMsg() {
-        template.convertAndSend("/chat", LocalDateTime.now() + " - EUR/USD: " + getRate());
+        template.convertAndSend("/msg", new Currency("EUR", "USD", getRate(), LocalDateTime.now()));
     }
 
     private String getRate() {
